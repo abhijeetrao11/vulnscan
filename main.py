@@ -4,6 +4,8 @@ import json
 
 from port_scanner import scan_ports
 from service_detector import find_service
+from version_detector import detect_version
+from banner_graber import grab_http_banner
 
 def main():
     if len(sys.argv) < 2:
@@ -31,18 +33,38 @@ def main():
     if not ports:
         print("No open ports found.")
 
-    # now service will star 
-
-    service = []
     service = find_service(ports)
-    #print(service)
+
     for i in range(len(ports)):
-        #print(f"[+] On port {ports[i]} {service[i]} service is running")
-        entry = {"port":ports[i] , "service":service[i]}
+        banner = None
+        software = None
+        version = None
+
+        #grab banner only for http service
+
+        if service[i] == "http":
+            banner = grab_http_banner(target , ports[i])
+
+            if banner:
+                version_info = detect_version(banner)
+                software = version_info["software"]
+                version = version_info["version"]
+            
+        entry = {
+            "port": ports[i],
+            "service": service[i],
+            "banner": banner,
+            "software": software,
+            "version": version
+        }
+
         final_report["results"].append(entry)
-    
-    #print(final_report)
+
     print(json.dumps(final_report,indent=4))
+
+
+
+
 main()
 
 
