@@ -1,0 +1,17 @@
+# ============  probing single port  ================================
+
+sock = socket.socket(socket.AF_INET , socket.SOCK_STREAM) --> creates a new TCP socket
+AF_INET -> specifies IPv4
+SOCK_STREAM -> specifies TCP
+SOCK_DGRAM -> UDP
+sock.settimeout(timeout) --> used to timeout so does not hang on unresponsive 
+result = sock.connect_ex((ip,port)) -> it attempts connection - returns 0 on success
+sock.close()
+
+# ================ resolve hostname  ==================================
+
+socket.gethostbyname(target) -> function performs a dns lookup
+
+
+
+
