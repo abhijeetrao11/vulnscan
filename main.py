@@ -6,6 +6,7 @@ from port_scanner import scan_ports
 from service_detector import find_service
 from version_detector import detect_version
 from banner_graber import grab_http_banner
+from cve_lookup import lookup_cve
 
 def main():
     if len(sys.argv) < 2:
@@ -49,13 +50,18 @@ def main():
                 version_info = detect_version(banner)
                 software = version_info["software"]
                 version = version_info["version"]
+
+        vulnerabilities = []
+        if software and version:
+            vulnerabilities = lookup_cve(software,version)
             
         entry = {
             "port": ports[i],
             "service": service[i],
             "banner": banner,
             "software": software,
-            "version": version
+            "version": version,
+            "vulnerabilities" : vulnerabilities
         }
 
         final_report["results"].append(entry)
