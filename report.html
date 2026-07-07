@@ -4,27 +4,61 @@
             <head>
             <meta charset="UTF=8">
             <title>VulnScanX Report</title>
+            <link rel="stylesheet" href="style.css">
             </head>
 
             <body>
+            <div class="container">
             <h1>VulnScanX</h1>
             <h2>Network Vulnerability Scan Report</h2>
             <hr>
             <h3>Scan Information</h3>
             <p><strong>Target:</strong> 192.168.64.8<p>
-            <p><strong>Scan Time:</strong>07-07-2026 14:06:55</p>
-            <p><strong>Total Open Ports:</strong> 12</p>
-            <p><strong>Total Vulnerabilities:</strong> 2</p>
-            <p><strong>Critical:</strong> 0</p>
-            <p><strong>High:</strong> 0</p>
-            <p><strong>Medium:</strong> 2</p>
-            <p><strong>Low:</strong> 0</p>
+            <p><strong>Scan Time:</strong>07-07-2026 18:39:53</p>
+            
+            <div class="summary">
+
+            <div class="card">
+            <h3>12</h3>
+            <p>open ports</p>
+            </div>
+
+            <div class="card">
+            <h3>2</h3>
+            <p>Total CVEs</p>
+            </div>
+
+            <div class="card critical">
+            <h3>0</h3>
+            <p>Critical</p>
+            </div>
+
+            <div class="card high">
+            <h3>0</h3>
+            <p>High</p>
+            </div>
+
+            <div class="card medium">
+            <h3>2</h3>
+            <p>Medium</p>
+            </div>
+
+            <div class="card low">
+            <h3>0</h3>
+            <p>Low</p>
+            </div>        
+
+
+
+
+            </div>
+        
             <hr>
 
             <h2>Open Ports</h2>
             <table border="1" cellspacing="0" cellpadding="8">
             <tr>
-            <th>Port</th>
+            <th class="center">Port</th>
             <th>Service</th>
             <th>Banner</th>
             <th>Software</th>
@@ -32,7 +66,7 @@
             </tr>
             
         <tr>
-        <td>21</td>
+        <td class="center">21</td>
         <td>ftp</td>
         <td>None</td>
         <td>None</td>
@@ -40,7 +74,7 @@
         </tr>
         
         <tr>
-        <td>22</td>
+        <td class="center">22</td>
         <td>ssh</td>
         <td>None</td>
         <td>None</td>
@@ -48,7 +82,7 @@
         </tr>
         
         <tr>
-        <td>23</td>
+        <td class="center">23</td>
         <td>telnet</td>
         <td>None</td>
         <td>None</td>
@@ -56,7 +90,7 @@
         </tr>
         
         <tr>
-        <td>25</td>
+        <td class="center">25</td>
         <td>smtp</td>
         <td>None</td>
         <td>None</td>
@@ -64,7 +98,7 @@
         </tr>
         
         <tr>
-        <td>53</td>
+        <td class="center">53</td>
         <td>domain</td>
         <td>None</td>
         <td>None</td>
@@ -72,7 +106,7 @@
         </tr>
         
         <tr>
-        <td>80</td>
+        <td class="center">80</td>
         <td>http</td>
         <td>Apache/2.2.8 (Ubuntu) DAV/2</td>
         <td>Apache</td>
@@ -80,7 +114,7 @@
         </tr>
         
         <tr>
-        <td>111</td>
+        <td class="center">111</td>
         <td>sunrpc</td>
         <td>None</td>
         <td>None</td>
@@ -88,7 +122,7 @@
         </tr>
         
         <tr>
-        <td>139</td>
+        <td class="center">139</td>
         <td>netbios-ssn</td>
         <td>None</td>
         <td>None</td>
@@ -96,7 +130,7 @@
         </tr>
         
         <tr>
-        <td>445</td>
+        <td class="center">445</td>
         <td>microsoft-ds</td>
         <td>None</td>
         <td>None</td>
@@ -104,7 +138,7 @@
         </tr>
         
         <tr>
-        <td>512</td>
+        <td class="center">512</td>
         <td>exec</td>
         <td>None</td>
         <td>None</td>
@@ -112,7 +146,7 @@
         </tr>
         
         <tr>
-        <td>513</td>
+        <td class="center">513</td>
         <td>login</td>
         <td>None</td>
         <td>None</td>
@@ -120,7 +154,7 @@
         </tr>
         
         <tr>
-        <td>514</td>
+        <td class="center">514</td>
         <td>shell</td>
         <td>None</td>
         <td>None</td>
@@ -133,67 +167,41 @@
     
     <h2>Vulnerabilities</h2>
     
-        <h3>Port 21 (ftp)</h3>
-        
-            <p>No known vulnerabilities found.</p>
+            <h3>Port 80 (http)</h3>
             
-        <h3>Port 22 (ssh)</h3>
-        
-            <p>No known vulnerabilities found.</p>
-            
-        <h3>Port 23 (telnet)</h3>
-        
-            <p>No known vulnerabilities found.</p>
-            
-        <h3>Port 25 (smtp)</h3>
-        
-            <p>No known vulnerabilities found.</p>
-            
-        <h3>Port 53 (domain)</h3>
-        
-            <p>No known vulnerabilities found.</p>
-            
-        <h3>Port 80 (http)</h3>
-        
-                <div>
-                <p><strong>CVE:</strong> CVE-2008-2364</p>
-                <p><strong>Severity:</strong> MEDIUM</p>
+                <div class="vuln-card">
+                <h4>CVE-2008-2364</h4>
+                <p>
+                <strong>Severity:</strong> 
+                <span class="badge medium">
+                MEDIUM
+                </span>
+                </p>
                 <p><strong>CVSS Score:</strong> 5.0</p>
                 <p><strong>Description:</strong></p>
                 <p>The ap_proxy_http_process_response function in mod_proxy_http.c in the mod_proxy module in the Apache HTTP Server 2.0.63 and 2.2.8 does not limit the number of forwarded interim responses, which allows remote HTTP servers to cause a denial of service (memory consumption) via a large number of interim responses.</p>
-                <hr>
                 </div>
                 
-                <div>
-                <p><strong>CVE:</strong> CVE-2022-29405</p>
-                <p><strong>Severity:</strong> MEDIUM</p>
+                <div class="vuln-card">
+                <h4>CVE-2022-29405</h4>
+                <p>
+                <strong>Severity:</strong> 
+                <span class="badge medium">
+                MEDIUM
+                </span>
+                </p>
                 <p><strong>CVSS Score:</strong> 4.0</p>
                 <p><strong>Description:</strong></p>
                 <p>In Apache Archiva, any registered user can reset password for any users. This is fixed in Archiva 2.2.8</p>
-                <hr>
                 </div>
                 
-        <h3>Port 111 (sunrpc)</h3>
-        
-            <p>No known vulnerabilities found.</p>
-            
-        <h3>Port 139 (netbios-ssn)</h3>
-        
-            <p>No known vulnerabilities found.</p>
-            
-        <h3>Port 445 (microsoft-ds)</h3>
-        
-            <p>No known vulnerabilities found.</p>
-            
-        <h3>Port 512 (exec)</h3>
-        
-            <p>No known vulnerabilities found.</p>
-            
-        <h3>Port 513 (login)</h3>
-        
-            <p>No known vulnerabilities found.</p>
-            
-        <h3>Port 514 (shell)</h3>
-        
-            <p>No known vulnerabilities found.</p>
-            
+    <hr>
+    <footer>
+    <p>Generated by <strong>VulnScanX</strong></p>
+    <p>Report Generated: 07-07-2026 18:39:53</p>
+    </footer>
+    
+    </div>
+    </body>
+    </html>
+    

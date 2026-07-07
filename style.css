@@ -1,0 +1,174 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    margin: 40px;
+    color: #333;
+}
+.h1{
+    color: #1f4e79;
+    text-align: center;
+}
+
+h2{
+    color: #444;
+    margin-top: 25px;
+}
+
+hr{
+    margin: 20px 0;
+}
+
+p{
+    line-height: 1.6;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th{
+    background: #1f4e79;
+    color: white;
+    padding: 12px;
+}
+
+td{
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+tr:nth-child(even){
+    background: #f8f8f8;
+}
+
+tr:hover{
+    background: #e8f2ff;
+}
+
+.center{
+    text-align: center;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+
+}
+
+.summary{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.card{
+    flex: 1;
+    min-width: 150px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 2px 8px rgba(0,0,0,.15);
+}
+.card h3{
+    front-size:36px;
+    color: #1f4e79;
+    margin-bottom: 10px;
+}
+
+.card p{
+    color: #666;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.critical{
+    border-top: 6px solid #dc3545;
+}
+
+.high{
+    border-top: 6px solid #fd7e14;
+}
+
+.medium{
+    border-top: 6px solid #ffc107;
+}
+
+.low{
+    border-top: 6px solid #28a745;
+}
+.vuln-card{
+    background: #ffffff;
+    border-left: 6px solid #1f4e79;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.vuln-card h4{
+    color: #1f4e79;
+    font-size: 22px;
+    margin-bottom: 15px;
+
+}
+
+.badge{
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.critical{
+    background: #dc3545;
+}
+
+.high{
+    background: #fd7e14;
+}
+
+.medium{
+    background: #ffc107;
+    color: black;
+}
+.low{
+    background: #28a745;
+}
+
+footer{
+    text-align: center;
+    margin-top: 40px;
+    color: #777;
+    font-size: 14px;
+}
+
+.card{
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+}
+
+.vuln-card{
+    transition: 0.3s;
+}
+
+.vuln-card:hover{
+    transform: translateY(-3px);
+}
+
+table{
+    overflow: hidden;
+    border-radius: 8px;
+}
