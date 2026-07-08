@@ -8,6 +8,7 @@ from version_detector import detect_version
 from banner_graber import grab_http_banner
 from cve_lookup import lookup_cve
 from report_generator import generate_html_report
+from pdf_generator import generate_pdf
 
 def main():
     if len(sys.argv) < 2:
@@ -69,6 +70,7 @@ def main():
 
     print(json.dumps(final_report,indent=4))
     generate_html_report(final_report)
+    generate_pdf()
 
 
 
