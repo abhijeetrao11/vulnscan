@@ -1,6 +1,7 @@
 import sys
 import socket
 import json
+import time
 
 from port_scanner import scan_ports
 from service_detector import find_service
@@ -21,6 +22,8 @@ def main():
     final_report["target"] = target
     final_report["results"] = []
 
+    start = time.time()
+
     if len(sys.argv) >= 4:
         sport = int(sys.argv[2])
         eport = int(sys.argv[3])
@@ -31,6 +34,10 @@ def main():
     else:
         ports = scan_ports(target)
         #print(ports)
+    end = time.time()
+    scan_time = end - start
+    print(f"\n[+] Port scan completed in {scan_time:.2f} seconds")
+    
 
     
     if not ports:
