@@ -2,6 +2,7 @@ import sys
 import socket
 import json
 import time
+import argparse
 
 from port_scanner import scan_ports
 from service_detector import find_service
@@ -15,8 +16,18 @@ def main():
     if len(sys.argv) < 2:
         print(f"Usage: python {sys.argv[0]} <target> [start_port end_port]")
         sys.exit(1)
+    
+    parser = argparse.ArgumentParser(description="Python Vulnerability Scanner")
+    parser.add_argument("target",help="Target IP address")
+    parser.add_argument("--start-port",type=int,default=1,help="Starting Port")
+    parser.add_argument("--end-port",type=int,default=1024,help="Ending port")
+    parser.add_argument("--threads",type=int,default=50,help="number of worker threads")
+    parser.add_argument("--pdf",action="store_true",help="generate pdf report ")
+    parser.add_argument("--html",action="store_true",help="generate html report ")
+    args = parser.parse_args()
 
-    target = sys.argv[1]
+
+    target = args.target
 
     final_report = {}
     final_report["target"] = target
@@ -24,16 +35,30 @@ def main():
 
     start = time.time()
 
-    if len(sys.argv) >= 4:
-        sport = int(sys.argv[2])
-        eport = int(sys.argv[3])
-        if eport > 65535:
-            print("your port number should be in range of 0-65535")
-            sys.exit(1)
-        ports = scan_ports(target, sport, eport)
-    else:
-        ports = scan_ports(target)
-        #print(ports)
+    sport = args.start_port
+    eport = args.end_port
+    thread = args.threads
+    generate_pdf_flag = args.pdf
+    generate_html_flag = args.html
+
+    if sport<1 or sport>65535:
+        print(f"[-] invalid start Port.")
+        sys.exit(1)
+
+    if eport<1 or eport>65535:
+        print(f"[-] Invalid start Port.")
+        sys.exit(1)
+    
+    if sport > eport:
+        print(f"[-] start port cannot be greater than end port")
+        sys.exit(1)
+    
+    if thread < 1:
+        print(f"[-] thread count must be greater than 0.")
+        sys.exit(1)
+
+   
+    ports = scan_ports(target, sport, eport,threads=thread)
     end = time.time()
     scan_time = end - start
     print(f"\n[+] Port scan completed in {scan_time:.2f} seconds")
@@ -76,8 +101,10 @@ def main():
         final_report["results"].append(entry)
 
     print(json.dumps(final_report,indent=4))
-    generate_html_report(final_report)
-    generate_pdf()
+    if generate_html_flag:
+        generate_html_report(final_report)
+    if generate_pdf_flag:
+        generate_pdf()
 
 
 

@@ -13,9 +13,9 @@ def probe_single_port(target , port , timeout = 0.5):
     
     
 
-def scan_ports(ip,start_port = 1,end_port = 1024,timeout = 0.5):
+def scan_ports(ip,start_port = 1,end_port = 1024,timeout = 0.5 , threads = 50):
     open_ports = []
-    with ThreadPoolExecutor(max_workers=50) as executor:
+    with ThreadPoolExecutor(max_workers=threads) as executor:
         futures = {}
         for port in range(int(start_port), int(end_port)+1):
             future = executor.submit(probe_single_port,ip,port, timeout)
