@@ -1,0 +1,12 @@
+re means regular expression  -> python provide this library to search pattern inside strings.
+re.search(pattern,string)
+
+in regex "\d" means digit [0 to 9] , "\d+" means one or more digit
+r means raw string
+[] -> means match one character from this set
+r"[abc]" means matches a or b or c , example -> re.search(r"[abc]" , "hello cat") -> output -> c
+\w -> word character
+. -> any character
+\. -> .
+\- -> range
++ -> means quantifier , 1 or more times

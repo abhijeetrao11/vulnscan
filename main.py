@@ -7,7 +7,7 @@ import argparse
 from port_scanner import scan_ports
 from service_detector import find_service
 from version_detector import detect_version
-from banner_graber import grab_http_banner
+from banner_graber import grab_banner
 from cve_lookup import lookup_cve
 from report_generator import generate_html_report
 from pdf_generator import generate_pdf
@@ -77,8 +77,30 @@ def main():
 
         #grab banner only for http service
 
-        if service[i] == "http":
-            banner = grab_http_banner(target , ports[i])
+        # if service[i] == "http":
+        #     banner = grab_http_banner(target , ports[i])
+
+        supported_services = [
+            "http",
+            "https",
+            "ssh",
+            "ftp",
+            "smtp",
+            "pop3",
+            "imap",
+            "mysql",
+            "redis"
+        ]
+
+        if service[i] in supported_services:
+            banner = grab_banner(
+                target,
+                ports[i],
+                service[i]
+            )
+
+
+        
 
             if banner:
                 version_info = detect_version(banner)

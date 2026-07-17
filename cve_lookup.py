@@ -8,7 +8,15 @@ def lookup_cve(software, version):
         "resultsPerPage":5
     }
 
-    response = requests.get(url, params=params)
+    try:
+        response = requests.get(
+            url, 
+            params=params,
+            timeout=10)
+    except requests.exceptions.RequestException:
+        return[]
+
+
     data = response.json()
 
     cve_list = []
@@ -17,14 +25,32 @@ def lookup_cve(software, version):
         cve = vuln["cve"]
         cve_id = cve["id"]
         description = cve["descriptions"][0]["value"]
-        metrics = cve["metrics"]["cvssMetricV2"][0]
-        score = metrics["cvssData"]["baseScore"]
-        severity = metrics["baseSeverity"]
+        #metrics = cve["metrics"]["cvssMetricV2"][0]
+        metrics = cve.get("metrics",{})
+        score = None
+        severity = None
+        if "cvssMetricV31" in metrics:
+            metric = metrics["cvssMetricV31"][0]
+
+            score = metric["cvssData"]["baseScore"]
+            severity = metric["cvssData"]["baseSeverity"]
+        elif "cvssMetricV30" in metrics:
+            metric = metrics["cvssMetricV30"][0]
+
+            score = metric["cvssData"]["baseScore"]
+            severity = metric["cvssData"]["baseSeverity"]
+        elif "cvssMetricV2" in metrics:
+            metric = metrics["cvssMetricV2"][0]
+
+            score = metric["cvssData"]["baseScore"]
+            severity = metric["baseSeverity"]
+
+
 
         entry = {
             "cve":cve_id,
-            "score":score,
-            "severity": severity,
+            "score":score if score else "N/A",
+            "severity": severity if severity else "UNKNOWN",
             "description": description
         }
 
