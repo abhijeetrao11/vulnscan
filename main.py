@@ -61,7 +61,7 @@ def main():
     ports = scan_ports(target, sport, eport,threads=thread)
     end = time.time()
     scan_time = end - start
-    print(f"\n[+] Port scan completed in {scan_time:.2f} seconds")
+    #print(f"\n[+] Port scan completed in {scan_time:.2f} seconds")
     
 
     
@@ -122,7 +122,7 @@ def main():
 
         final_report["results"].append(entry)
 
-    print(json.dumps(final_report,indent=4))
+    print(json.dumps(final_report))
     if generate_html_flag:
         generate_html_report(final_report)
     if generate_pdf_flag:
