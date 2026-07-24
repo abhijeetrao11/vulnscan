@@ -1,17 +1,22 @@
 const path = require("path");
 
-const downloadHTML = (req,res) => {
+const htmlReport = (req, res) => {
 
-    const filePath = path.join(__dirname,"../../report.html");
-    res.download(filePath);
-
+    res.sendFile(
+        path.join(
+            "/home/alfino/project_vuln_scanner/report.html"
+        )
+    );
 };
 
+const pdfReport = (req, res) => {
 
-const downloadPDF = (req,res) => {
-
-    const filePath = path.join(__dirname,"../../report.pdf");
-    res.download(filePath);
-
+    res.download(
+        "/home/alfino/project_vuln_scanner/report.pdf"
+    );
 };
-module.exports = {downloadHTML,downloadPDF};
+
+module.exports = {
+    htmlReport,
+    pdfReport
+};

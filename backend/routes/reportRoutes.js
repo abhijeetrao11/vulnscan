@@ -3,12 +3,12 @@ const express = require("express");
 const router = express.Router();
 
 const {
-    downloadHTML, 
-    downloadPDF
-}
-=
-require("../controllers/reportController");
+    htmlReport,
+    pdfReport
+} = require("../controllers/reportController");
 
-router.get("/html",downloadHTML);
-router.get("/pdf",downloadPDF);
+router.get("/html", htmlReport);
+
+router.get("/pdf", pdfReport);
+
 module.exports = router;

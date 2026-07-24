@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VulnScanX</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>VulnScanX</h1>
+
+    <input
+        id="target"
+        placeholder="scanme.nmap.org"
+    >
+
+    <button onclick="startScan()">
+        Scan
+    </button>
+
+    <div id="status"></div>
+
+    <div id="reports" style="display:none">
+
+        <a
+            href="http://localhost:3000/report/html"
+            target="_blank"
+        >
+            Open HTML Report
+        </a>
+
+        <br><br>
+
+        <a
+            href="http://localhost:3000/report/pdf"
+            target="_blank"
+        >
+            Download PDF
+        </a>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

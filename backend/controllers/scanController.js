@@ -2,26 +2,29 @@ const {
     runScanner
 } = require("../services/scannerService");
 
+const scan = async (req, res) => {
 
-const scan = async (req,res) => {
+    try {
 
-    try{
-       const { target } = req.body;
-       
-       const result = await runScanner(target);
+        const { target } = req.body;
+
+        await runScanner(target);
 
         res.json({
             success: true,
-            output: result
-        }); 
+            message: "Scan Complete"
+        });
+
     }
-    catch (err){
+    catch (err) {
+
+        console.log(err);
+
         res.status(500).json({
             success: false,
             error: err
         });
     }
-    
 };
 
 module.exports = {

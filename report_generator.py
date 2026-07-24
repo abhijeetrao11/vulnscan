@@ -1,4 +1,6 @@
 from datetime import datetime
+import os
+
 
 def generate_html_report(scan_result):
     scan_time = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
@@ -159,10 +161,12 @@ def generate_html_report(scan_result):
 
 
 
-    with open("report.html","w") as file:
-        file.write(html)
-    print("[+] HTML report generated succesfully.")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    REPORT_PATH = os.path.join(BASE_DIR, "report.html")
 
-    
+    with open(REPORT_PATH, "w", encoding="utf-8") as file:
+        file.write(html)
+
+    print(f"HTML saved at {REPORT_PATH}") 
 
     
